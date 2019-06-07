@@ -202,13 +202,13 @@ public class SystemUtil {
         }
 
         // check CPU
-        if (getNumberOfProcessors() < 2) {
+        if (getNumberOfProcessors() < 4) {
             logger.info("# of CPU cores = {}", getNumberOfProcessors());
             return false;
         }
 
         // check memory
-        if (getTotalMemorySize() < 3L * 1024L * 1024L * 1024L) {
+        if (getTotalMemorySize() < 8L * 1024L * 1024L * 1024L) {
             logger.info("Total physical memory size = {} MB", getTotalMemorySize() / 1024 / 1024);
             return false;
         }

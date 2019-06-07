@@ -44,7 +44,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
 
     private static final long serialVersionUID = 1L;
     private static final Logger logger = LoggerFactory.getLogger(MenuBar.class);
-    public static final String HELP_URL = "https://github.com/waixingdun/Aliencoin/tree/master/doc";
+    private static final String HELP_URL = "https://github.com/waixingdun/alienchain/tree/master/docs";
 
     private final transient AlienchainGui gui;
     private final JFrame frame;

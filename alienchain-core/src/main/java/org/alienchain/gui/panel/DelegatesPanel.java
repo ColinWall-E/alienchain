@@ -461,6 +461,7 @@ public class DelegatesPanel extends JPanel implements ActionListener {
     protected void voteOrUnvote(Action action) {
         WalletAccount a = getSelectedAccount();
         WalletDelegate d = getSelectedDelegate();
+        AccountItem selected = (AccountItem) selectFrom.getSelectedItem();
         String v = action.equals(Action.VOTE) ? textVote.getText() : textUnvote.getText();
         Amount value;
         try {
@@ -483,6 +484,16 @@ public class DelegatesPanel extends JPanel implements ActionListener {
                 if (valueWithFee.gt(a.getAvailable())) {
                     JOptionPane.showMessageDialog(this,
                             GuiMessages.get("InsufficientFunds", SwingUtil.formatAmount(valueWithFee)));
+                    return;
+                }
+                if (value.gt(config.maxVoteAmount())){
+                    JOptionPane.showMessageDialog(this,
+                            GuiMessages.get("InvalidVoteAmount", SwingUtil.formatAmount(config.maxVoteAmount())));
+                    return;
+                }
+                if (selected.voteCount >= config.maxVoteCount()){
+                    JOptionPane.showMessageDialog(this,
+                            GuiMessages.get("InvalidVoteCount", config.maxVoteCount()));
                     return;
                 }
 
@@ -564,11 +575,13 @@ public class DelegatesPanel extends JPanel implements ActionListener {
                 return;
             }
 
-            // confirm system requirements
-            if ((config.network() == Network.MAINNET && !SystemUtil.bench()) && JOptionPane
-                    .showConfirmDialog(this, GuiMessages.get("ComputerNotQualified"),
-                            GuiMessages.get("ConfirmDelegateRegistration"),
-                            JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION) {
+            // delegate system requirements
+            if (config.network() == Network.MAINNET && !SystemUtil.bench()) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        GuiMessages.get("computerNotQualifiedDelegate"),
+                        GuiMessages.get("ErrorDialogTitle"),
+                        JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -659,11 +672,25 @@ public class DelegatesPanel extends JPanel implements ActionListener {
     protected static class AccountItem {
         final WalletAccount account;
         final String name;
+        final int voteCount;
+        final int unvoteCount;
 
         public AccountItem(WalletAccount a) {
             this.account = a;
             this.name = a.getName().orElse(SwingUtil.getAddressAbbr(a.getAddress())) + ", " // alias or abbreviation
                     + SwingUtil.formatAmount(account.getAvailable());
+
+            int voteCountTmp = 0;
+            int unvoteCountTmp = 0;
+            for (Transaction tx : a.getTransactions()) {
+                if (tx.getType().equals(TransactionType.VOTE)) {
+                    voteCountTmp++;
+                } else if (tx.getType().equals(TransactionType.UNVOTE)) {
+                    unvoteCountTmp++;
+                }
+            }
+            this.voteCount = voteCountTmp;
+            this.unvoteCount = unvoteCountTmp;
         }
 
         @Override
