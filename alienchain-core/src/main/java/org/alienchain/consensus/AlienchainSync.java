@@ -517,7 +517,7 @@ public class AlienchainSync implements SyncManager {
         // a workaround to ensure testnet clients ignore bad block, can remove at later
         // date
         if (config.network() == Network.TESTNET) {
-            String badBlock = "0x1a472841464b9bea9e530d73a95e1213f29adef11a3661f3e98df87a9a230b7d";
+            String badBlock = "0xfd250aa86b2b259d0888bdf9b1012a076616102db79b4b3d53e843bfe738287a";
             String blockHash = Hex.encode0x(block.getHash());
             if (badBlock.equals(blockHash)) {
                 return false;
