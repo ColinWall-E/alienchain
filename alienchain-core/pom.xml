@@ -271,7 +271,7 @@
                         </goals>
                         <configuration>
                             <target>
-                                <echo file="${project.build.outputDirectory}/VERSION"></echo>
+                                <echo file="${project.build.outputDirectory}/VERSION">${git.commit.id.abbrev}</echo>
                             </target>
                         </configuration>
                     </execution>

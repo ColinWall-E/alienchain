@@ -115,6 +115,34 @@ public interface Config {
     Amount minDelegateBurnAmount();
 
     /**
+     * Returns the max amount of votes
+     *
+     * @return
+     */
+    Amount maxVoteAmount();
+
+    /**
+     * Returns the maximum number of votes
+     *
+     * @return
+     */
+    int maxVoteCount();
+
+    /**
+     * Returns the max amount of unvotes
+     *
+     * @return
+     */
+    Amount maxUnVoteAmount();
+
+    /**
+     * Returns the maximum number of unvotes
+     *
+     * @return
+     */
+    int maxUnVoteCount();
+
+    /**
      * Returns the block reward for a specific block.
      *
      * @param number

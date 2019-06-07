@@ -2,17 +2,21 @@
     "number": 0,
     "coinbase": "0x0000000000000000000000000000000000000000",
     "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-    "timestamp": 1555515222000,
+    "timestamp": 1559925300000,
     "data": "alienchain",
     "premine": [
         {
-            "address": "0xfe3796e894f36786c7849652f9811fd22cc611c6",
+            "address": "0x1d83452cad053bab27a6f0851d01c20e5b8528fd",
             "amount": 5000000000000000000,
             "note": "development"
         }
     ],
     "delegates": {
-        "teacher_zhou": "0xec00b5b43f7c9229955b35d95fb96ca79ab8a59d"
+        "alienchain_d1": "0x3c544cfeacb1eb814eca28db15f7d7da89dc34cd",
+        "alienchain_d2": "0x8767aeaf2ce8d35ad78ae5cbee11b9ca1bfa7d2e",
+        "alienchain_d3": "0x2a1cad5d79ab2126d3e9e907bf58162f42b5a609",
+        "alienchain_d4": "0xb3f78bab298aede25032250a30d450fbbb9c524c",
+        "alienchain_d5": "0x6a59da650e958735e115dcbd474241562e80bbd0"
     },
     "config": {
 
