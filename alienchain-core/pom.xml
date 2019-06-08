@@ -131,7 +131,7 @@
                         <index>true</index>
                         <manifestEntries>
                             <Main-Class>org.alienchain.Main</Main-Class>
-                            <Implementation-Version></Implementation-Version>
+                            <Implementation-Version>${git.commit.id.abbrev}</Implementation-Version>
                             <X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
                             <X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
                         </manifestEntries>
@@ -178,7 +178,7 @@
                         <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                             <manifestEntries>
                                 <Main-Class>org.alienchain.Main</Main-Class>
-                                <Implementation-Version></Implementation-Version>
+                                <Implementation-Version>${git.commit.id.abbrev}</Implementation-Version>
                                 <X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
                                 <X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
                             </manifestEntries>
@@ -789,28 +789,28 @@
             </activation>
             <build>
                 <plugins>
-<!--                    <plugin>-->
-<!--                        <groupId>org.apache.maven.plugins</groupId>-->
-<!--                        <artifactId>maven-failsafe-plugin</artifactId>-->
-<!--                        <version>2.22.0</version>-->
-<!--                        <configuration>-->
-<!--                            <groups>org.alienchainchain.windows.WindowsIntegrationTest</groups>-->
-<!--                        </configuration>-->
-<!--                        <executions>-->
-<!--                            <execution>-->
-<!--                                <id>integration-test</id>-->
-<!--                                <goals>-->
-<!--                                    <goal>integration-test</goal>-->
-<!--                                </goals>-->
-<!--                            </execution>-->
-<!--                            <execution>-->
-<!--                                <id>verify</id>-->
-<!--                                <goals>-->
-<!--                                    <goal>verify</goal>-->
-<!--                                </goals>-->
-<!--                            </execution>-->
-<!--                        </executions>-->
-<!--                    </plugin>-->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>2.22.0</version>
+                        <configuration>
+                            <groups>org.alienchain.windows.WindowsIntegrationTest</groups>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>integration-test</id>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>verify</id>
+                                <goals>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
