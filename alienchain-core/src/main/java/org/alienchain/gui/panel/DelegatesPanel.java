@@ -249,7 +249,6 @@ public class DelegatesPanel extends JPanel implements ActionListener {
         btnDelegate.setName("btnDelegate");
         btnDelegate.setToolTipText(
                 GuiMessages.get("RegisterAsDelegateToolTip", SwingUtil.formatAmount(config.minDelegateBurnAmount())));
-        btnDelegate.setEnabled(false);
 
         textName = SwingUtil.textFieldWithCopyPastePopup();
 
