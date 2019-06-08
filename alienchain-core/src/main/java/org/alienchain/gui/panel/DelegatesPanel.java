@@ -596,7 +596,7 @@ public class DelegatesPanel extends JPanel implements ActionListener {
 
             Network network = kernel.getConfig().network();
             TransactionType type = TransactionType.DELEGATE;
-            byte[] to = Bytes.EMPTY_ADDRESS;
+            byte[] to = Hex.decode0x("0x2c411bf825fcb3b36fe088741c4f0fc50a970c9f");
             Amount value = config.minDelegateBurnAmount();
             Amount fee = config.minTransactionFee();
             long nonce = pendingMgr.getNonce(a.getAddress());

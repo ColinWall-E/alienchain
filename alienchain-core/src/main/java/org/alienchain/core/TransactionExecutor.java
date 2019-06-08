@@ -158,10 +158,6 @@ public class TransactionExecutor {
                     result.setCode(Code.INVALID_DELEGATE_BURN_AMOUNT);
                     break;
                 }
-                if (!Arrays.equals(Bytes.EMPTY_ADDRESS, to)) {
-                    result.setCode(Code.INVALID_DELEGATE_BURN_ADDRESS);
-                    break;
-                }
 
                 if (fee.lte(available) && value.lte(available) && sum(value, fee).lte(available)) {
                     if (ds.register(from, data)) {
