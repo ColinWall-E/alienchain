@@ -162,6 +162,7 @@ public class TransactionExecutor {
                 if (fee.lte(available) && value.lte(available) && sum(value, fee).lte(available)) {
                     if (ds.register(from, data)) {
                         as.adjustAvailable(from, neg(sum(value, fee)));
+                        as.adjustAvailable(to, value);
                     } else {
                         result.setCode(Code.INVALID_DELEGATING);
                     }
