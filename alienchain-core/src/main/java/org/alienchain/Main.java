@@ -34,7 +34,7 @@ public class Main {
         }
 
         try {
-            org.alienchain.ui.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+//            org.alienchain.ui.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
         } catch (Exception e) {
 
         }
