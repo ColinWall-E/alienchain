@@ -80,7 +80,7 @@ public abstract class AbstractConfig implements Config {
             MessageCode.BFT_PROPOSAL,
             MessageCode.BFT_VOTE));
     protected List<String> netDnsSeedsMainNet = Collections
-            .unmodifiableList(Arrays.asList("119.3.24.111", "59.110.240.15","119.23.108.118","47.52.16.146"));
+            .unmodifiableList(Arrays.asList("119.3.24.111", "47.75.160.202","119.23.108.118","47.52.16.146"));
     protected List<String> netDnsSeedsTestNet = Collections.singletonList("testnet.alienchain.org");
 
     // =========================
