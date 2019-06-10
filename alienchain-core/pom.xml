@@ -187,6 +187,33 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>2.2.4</version>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>validate-the-git-infos</id>
+                        <goals>
+                            <goal>validateRevision</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skip>${skip.git.info}</skip>
+                    <abbrevLength>7</abbrevLength>
+                    <verbose>false</verbose>
+                    <skipPoms>false</skipPoms>
+                </configuration>
+            </plugin>
+
             <!-- build windows executable (currently GUI mode only) -->
             <plugin>
                 <groupId>com.akathist.maven.plugins.launch4j</groupId>
