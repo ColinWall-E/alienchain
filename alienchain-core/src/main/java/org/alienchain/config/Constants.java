@@ -118,10 +118,10 @@ public class Constants {
     static {
         try {
             COINBASE_KEY = new Key(Hex.decode0x(
-                    "0x302e020100300506032b65700422042012ea00e43f4f1f9805bbbd7df0dd7b8a8a63cc7579604e82f658cfdefe12b125"));
+                    "0x302e020100300506032b6570042204207d8e2303ee17b0800ad77956f0e605e5ee19e66c24a30299b3bc38773dbbd1bf"));
             COINBASE_ADDRESS = COINBASE_KEY.toAddress();
             DEVNET_KEY = new Key(Hex.decode0x(
-                    "0x302e020100300506032b6570042204207727f600c3b289752d7a099558a0896601b34330498c25c9109f1a8e2f35a4d7"));
+                    "0x302e020100300506032b65700422042023511bc04be7ffd3842a2eea50d497ec004b98b323e3697020a13f557a9ec92d"));
 
         } catch (InvalidKeySpecException e) {
             throw new CryptoException(e);

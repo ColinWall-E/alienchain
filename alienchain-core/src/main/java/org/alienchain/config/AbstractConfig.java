@@ -6,23 +6,6 @@
  */
 package org.alienchain.config;
 
-import static org.alienchain.core.Amount.Unit.ALX;
-import static org.alienchain.core.Amount.Unit.MILLI_ALX;
-import static org.alienchain.core.Amount.ZERO;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.Properties;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
 import org.alienchain.Network;
 import org.alienchain.config.exception.ConfigException;
 import org.alienchain.core.Amount;
@@ -38,6 +21,16 @@ import org.alienchain.util.SystemUtil;
 import org.alienchain.util.exception.UnreachableException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.math.BigInteger;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
+
+import static org.alienchain.core.Amount.Unit.ALX;
+import static org.alienchain.core.Amount.Unit.MILLI_ALX;
+import static org.alienchain.core.Amount.ZERO;
 
 public abstract class AbstractConfig implements Config {
 
@@ -77,14 +70,18 @@ public abstract class AbstractConfig implements Config {
     protected int netRelayRedundancy = 8;
     protected int netHandshakeExpiry = 5 * 60 * 1000;
     protected int netChannelIdleTimeout = 2 * 60 * 1000;
+    protected Amount maxVoteAmount = ALX.of(1000);
+    protected int maxVoteCount = 10;
+    protected Amount maxUnVoteAmount = ALX.of(1000);
+    protected int maxUnVoteCount = 10;
     protected Set<MessageCode> netPrioritizedMessages = new HashSet<>(Arrays.asList(
             MessageCode.BFT_NEW_HEIGHT,
             MessageCode.BFT_NEW_VIEW,
             MessageCode.BFT_PROPOSAL,
             MessageCode.BFT_VOTE));
     protected List<String> netDnsSeedsMainNet = Collections
-            .unmodifiableList(Arrays.asList("119.3.24.111", "47.52.16.146","119.23.108.118","59.110.240.15"));
-    protected List<String> netDnsSeedsTestNet = Collections.singletonList("119.3.24.111");
+            .unmodifiableList(Arrays.asList("119.3.24.111", "47.75.160.202","119.23.108.118","47.52.16.146"));
+    protected List<String> netDnsSeedsTestNet = Collections.singletonList("testnet.alienchain.org");
 
     // =========================
     // Sync
@@ -320,6 +317,26 @@ public abstract class AbstractConfig implements Config {
     @Override
     public Amount minDelegateBurnAmount() {
         return minDelegateBurnAmount;
+    }
+
+    @Override
+    public Amount maxVoteAmount() {
+        return maxVoteAmount;
+    }
+
+    @Override
+    public int maxVoteCount() {
+        return maxVoteCount;
+    }
+
+    @Override
+    public Amount maxUnVoteAmount() {
+        return maxUnVoteAmount;
+    }
+
+    @Override
+    public int maxUnVoteCount() {
+        return maxUnVoteCount;
     }
 
     @Override

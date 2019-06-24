@@ -131,7 +131,7 @@
                         <index>true</index>
                         <manifestEntries>
                             <Main-Class>org.alienchain.Main</Main-Class>
-                            <Implementation-Version></Implementation-Version>
+                            <Implementation-Version>${git.commit.id.abbrev}</Implementation-Version>
                             <X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
                             <X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
                         </manifestEntries>
@@ -178,12 +178,39 @@
                         <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                             <manifestEntries>
                                 <Main-Class>org.alienchain.Main</Main-Class>
-                                <Implementation-Version></Implementation-Version>
+                                <Implementation-Version>${git.commit.id.abbrev}</Implementation-Version>
                                 <X-Compile-Source-JDK>${maven.compiler.source}</X-Compile-Source-JDK>
                                 <X-Compile-Target-JDK>${maven.compiler.target}</X-Compile-Target-JDK>
                             </manifestEntries>
                         </transformer>
                     </transformers>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>2.2.4</version>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>validate-the-git-infos</id>
+                        <goals>
+                            <goal>validateRevision</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skip>${skip.git.info}</skip>
+                    <abbrevLength>7</abbrevLength>
+                    <verbose>false</verbose>
+                    <skipPoms>false</skipPoms>
                 </configuration>
             </plugin>
 
@@ -271,7 +298,7 @@
                         </goals>
                         <configuration>
                             <target>
-                                <echo file="${project.build.outputDirectory}/VERSION"></echo>
+                                <echo file="${project.build.outputDirectory}/VERSION">${git.commit.id.abbrev}</echo>
                             </target>
                         </configuration>
                     </execution>
@@ -789,28 +816,28 @@
             </activation>
             <build>
                 <plugins>
-<!--                    <plugin>-->
-<!--                        <groupId>org.apache.maven.plugins</groupId>-->
-<!--                        <artifactId>maven-failsafe-plugin</artifactId>-->
-<!--                        <version>2.22.0</version>-->
-<!--                        <configuration>-->
-<!--                            <groups>org.alienchainchain.windows.WindowsIntegrationTest</groups>-->
-<!--                        </configuration>-->
-<!--                        <executions>-->
-<!--                            <execution>-->
-<!--                                <id>integration-test</id>-->
-<!--                                <goals>-->
-<!--                                    <goal>integration-test</goal>-->
-<!--                                </goals>-->
-<!--                            </execution>-->
-<!--                            <execution>-->
-<!--                                <id>verify</id>-->
-<!--                                <goals>-->
-<!--                                    <goal>verify</goal>-->
-<!--                                </goals>-->
-<!--                            </execution>-->
-<!--                        </executions>-->
-<!--                    </plugin>-->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>2.22.0</version>
+                        <configuration>
+                            <groups>org.alienchain.windows.WindowsIntegrationTest</groups>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>integration-test</id>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>verify</id>
+                                <goals>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
                 </plugins>
             </build>
         </profile>

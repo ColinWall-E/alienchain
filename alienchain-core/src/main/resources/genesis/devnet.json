@@ -2,17 +2,17 @@
     "number": 0,
     "coinbase": "0x0000000000000000000000000000000000000000",
     "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-    "timestamp": 1555515222000,
+    "timestamp": 1559925100000,
     "data": "alienchain",
     "premine": [
         {
-            "address": "0x4f3159a184e9a4047b8e428dd81850404be037f2",
+            "address": "0xfe4c65aa497644d1a2056e9d39b9d4e50a6ac459",
             "amount": 25000000000000000,
             "note": "dev"
         }
     ],
     "delegates": {
-        "alienchain": "0xef52f7b7018a6b1899dd5f146ee73393079be115"
+        "alienchain_dev": "0x1d8673cb8b9f88ea2579aa7d16b5df826b6f405d"
     },
     "config": {
         
